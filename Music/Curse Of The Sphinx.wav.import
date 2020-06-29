@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Curse Of The Sphinx.wav-a35dc60e4262e4b223ac38f12c7dd885.sample"
+
+[deps]
+
+source_file="res://Music/Curse Of The Sphinx.wav"
+dest_files=[ "res://.import/Curse Of The Sphinx.wav-a35dc60e4262e4b223ac38f12c7dd885.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

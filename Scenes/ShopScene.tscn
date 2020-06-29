@@ -1,0 +1,219 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://Scenes/MusicPlayer.gd" type="Script" id=1]
+[ext_resource path="res://Extras/pc.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Music/Sigma 1.wav" type="AudioStream" id=3]
+[ext_resource path="res://Images/shopScene/Skins/sprite_2.png" type="Texture" id=4]
+[ext_resource path="res://Images/shopScene/Skins/sprite_8.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/ShopScene.gd" type="Script" id=6]
+[ext_resource path="res://Images/shopScene/Skins/sprite_5.png" type="Texture" id=7]
+[ext_resource path="res://Images/shopScene/arrow.png" type="Texture" id=8]
+[ext_resource path="res://Images/shopScene/Skins/sprite_7.png" type="Texture" id=9]
+[ext_resource path="res://Images/shopScene/Skins/sprite_1.png" type="Texture" id=10]
+[ext_resource path="res://Images/shopScene/Skins/sprite_0.png" type="Texture" id=11]
+[ext_resource path="res://Images/shopScene/Skins/sprite_4.png" type="Texture" id=12]
+[ext_resource path="res://Images/shopScene/Skins/sprite_3.png" type="Texture" id=13]
+[ext_resource path="res://Images/shopScene/Skins/sprite_6.png" type="Texture" id=14]
+[ext_resource path="res://Scenes/Leave.gd" type="Script" id=15]
+[ext_resource path="res://Scenes/Next.gd" type="Script" id=16]
+[ext_resource path="res://Scenes/Back.gd" type="Script" id=17]
+[ext_resource path="res://Scenes/BuyUse.gd" type="Script" id=18]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "id_7",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "id_8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "id_5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "id_4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "id_3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "id_1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "id_0",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "id_2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "id_6",
+"speed": 5.0
+} ]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[node name="ShopScene" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 270.0
+margin_bottom = 540.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Leave" type="Button" parent="."]
+margin_left = 2.9176
+margin_top = -0.862469
+margin_right = 162.918
+margin_bottom = 159.138
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+icon = ExtResource( 8 )
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="Button" parent="."]
+margin_left = 255.0
+margin_top = 285.0
+margin_right = 415.0
+margin_bottom = 445.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+icon = ExtResource( 8 )
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="Button" parent="."]
+margin_left = 10.0
+margin_top = 240.0
+margin_right = 170.0
+margin_bottom = 400.0
+rect_scale = Vector2( 0.3, 0.3 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+icon = ExtResource( 8 )
+script = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+autoplay = true
+script = ExtResource( 1 )
+
+[node name="ShopLabel" type="Label" parent="."]
+margin_left = 70.6696
+margin_top = 127.022
+margin_right = 134.67
+margin_bottom = 143.022
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 2 )
+text = "Shop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LabelShadow" type="Label" parent="."]
+margin_left = 76.4697
+margin_top = 127.375
+margin_right = 140.47
+margin_bottom = 143.375
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.784314, 0.0117647, 1, 1 )
+text = "Shop"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 135, 255 )
+frames = SubResource( 5 )
+animation = "id_0"
+
+[node name="Price" type="Label" parent="."]
+margin_left = 60.3383
+margin_top = 340.487
+margin_right = 204.338
+margin_bottom = 356.487
+custom_fonts/font = ExtResource( 2 )
+text = "Price: 0$"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyUse" type="Button" parent="."]
+margin_left = 53.0686
+margin_top = 408.801
+margin_right = 165.069
+margin_bottom = 436.801
+rect_scale = Vector2( 1.5, 1.5 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/pressed = SubResource( 7 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 9 )
+custom_fonts/font = ExtResource( 2 )
+text = "Current"
+script = ExtResource( 18 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Balance" type="Label" parent="."]
+margin_left = 105.0
+margin_top = 515.0
+margin_right = 281.0
+margin_bottom = 531.0
+custom_fonts/font = ExtResource( 2 )
+text = "Gold: 000$"
+__meta__ = {
+"_edit_use_anchors_": false
+}
