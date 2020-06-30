@@ -2,10 +2,11 @@ extends Node2D
 
 var velocity = Vector2(0, 0)
 var previous_velocity = Vector2(0, 0)
-var number = 1
+var number = 1.5
 var enemy_chance = 0.9
 var windDash = 0
 var fireExplosion = false
+var bounce = false
 const coin = preload("res://Objects/Coin.tscn")
 const star = preload("res://Objects/Star.tscn")
 const rock = preload("res://Objects/Rock.tscn")
@@ -17,24 +18,27 @@ func _ready():
 	$HighScore.text = GlobalVariables.highscore
 	$Player/Sprite.animation = "id_" + GlobalVariables.currentSkin
 
-# warning-ignore:unused_argument
 func _process(delta):
 	number += 0.0001
 	enemy_chance -= 0.000005
 	if ($Player/Sprite.animation != "death"):
-# warning-ignore:unused_variable
-		var collision = $Player.move_and_collide(velocity)
+		var collision = $Player.move_and_collide(velocity * delta)
+		if collision != null && bounce:
+			if collision.collider.name == "VerticalLimits":
+				velocity.y *= -1.2
+				velocity.x *= 1.2
+			else:
+				velocity.y *= 1.2
+				velocity.x *= -1.2
+			$Player.move_and_collide(velocity * delta)
 	elif ($MusicPlayer.playing):
 		$MusicPlayer.stop()
 		GlobalVariables.score = $Score.text
 		if (int($Score.text) > int(GlobalVariables.highscore)):
 			GlobalVariables.highscore = $Score.text
-	velocity *= 0.92
-	if (velocity != Vector2(0, 0) && velocity.distance_to(previous_velocity) < 0.1):
+	velocity *= pow(0.92, delta * 60)
+	if (velocity != Vector2(0, 0) && velocity.distance_to(previous_velocity) < 0.08):
 		velocity = Vector2(0, 0)
-	if (velocity == Vector2(0, 0) && fireExplosion):
-		var kaboom = explosion.instance()
-		kaboom.set_position($Player.get_position())
 	if (velocity == Vector2(0, 0) && fireExplosion):
 		fireExplosion = false
 		var instance = explosion.instance()
@@ -47,7 +51,7 @@ func _input(event):
 		if ($Score.text != "0"):
 			$Score.text = str(int($Score.text) - 10)
 		var vectorBetweenPoints = event.get_position() - $Player.get_position()
-		velocity = vectorBetweenPoints.normalized() * (vectorBetweenPoints.length()/10)
+		velocity = vectorBetweenPoints.normalized() * (vectorBetweenPoints.length()/10) * 60
 		$Player.look_at(event.get_position())
 		$Player.rotation_degrees += 90
 		if (windDash == 1):
@@ -65,6 +69,20 @@ func _input(event):
 
 func _on_TryToSpawn_timeout():
 	if (rand_range(0,10) < number):
+		spawn_item()
+
+func spawn_item():
+	$CollisionCheck/Timer.start()
+	$CollisionCheck.set_position(Vector2(
+		rand_range(30,250), rand_range(100, 520)
+	))
+		
+func on_score_add(score_added):
+	$Score.text = str(int($Score.text) + score_added)
+
+
+func _on_CollisionCheck_safe_area(location):
+	if (location != null):
 		var instance
 		if (rand_range(0,1) > enemy_chance):
 			instance = rock.instance()
@@ -78,11 +96,7 @@ func _on_TryToSpawn_timeout():
 		else:
 			instance = star.instance()
 			instance.connect("score", self, "on_score_add")
-		instance.set_position(Vector2(
-			rand_range(30,250), rand_range(100, 520)
-		))
+		instance.set_position(location)
 		add_child(instance)
-	pass
-
-func on_score_add(score_added):
-	$Score.text = str(int($Score.text) + score_added)
+	else:
+		spawn_item()

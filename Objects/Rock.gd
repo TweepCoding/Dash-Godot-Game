@@ -13,7 +13,3 @@ func _on_Area2D_body_entered(body):
 		emit_signal("score",20)
 		get_parent().get_node("Player/Break").play()
 	queue_free()
-
-
-func _on_Area2D_area_entered(_area):
-	queue_free()

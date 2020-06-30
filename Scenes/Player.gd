@@ -13,6 +13,9 @@ func on_spell(spell):
 		get_parent().windDash = 1
 	elif (spell == "fire"):
 		get_parent().fireExplosion = true
+	elif (spell == "bounce"):
+		get_parent().bounce = true
+		$BouncePower.start()
 
 func _on_Sprite_animation_finished():
 # warning-ignore:return_value_discarded
@@ -33,3 +36,7 @@ func _on_IdleDeathAnimation_timeout():
 		$Sprite.animation = "predeath"
 	else:
 		$Sprite.animation = "id_" + GlobalVariables.currentSkin
+
+
+func _on_BouncePower_timeout():
+	get_parent().bounce = false
