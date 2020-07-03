@@ -41,6 +41,7 @@ func _process(delta):
 		velocity = Vector2(0, 0)
 	if (velocity == Vector2(0, 0) && fireExplosion):
 		fireExplosion = false
+		GlobalVariables.spell_active[1] = false
 		var instance = explosion.instance()
 		instance.set_position($Player.get_position())
 		add_child(instance)
@@ -59,6 +60,7 @@ func _input(event):
 			$Player/Special.play()
 		elif (windDash == 2):
 			windDash = 0
+			GlobalVariables.spell_active[0] = false
 		$Player/IdleDeath.start()
 		if ($Player/IdleDeathWarning.time_left == 0):
 			$Player/IdleDeathAnimation.stop()

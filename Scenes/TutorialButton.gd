@@ -1,9 +1,10 @@
 extends Button
 
+signal change(scene)
+
 func _ready():
 	pass
 
 
 func _pressed():
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Scenes/TutorialScene.tscn")
+	emit_signal("change", "res://Scenes/Achievements.tscn")

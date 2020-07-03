@@ -28,8 +28,8 @@ frames = SubResource( 1 )
 animation = "bounce"
 script = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Spell" type="Area2D" parent="."]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spell"]
 polygon = PoolVector2Array( -8.06889, 8.33859, -8.19845, 3.54481, -7.29152, 3.48003, -7.16195, -3.96977, -3.2751, -8.18053, 8.38545, -8.18053, 8.45023, -3.32196, 7.80242, -3.06284, 7.73764, 3.80393, 3.59167, 8.27381 )
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Spell" to="." method="_on_Area2D_body_entered"]

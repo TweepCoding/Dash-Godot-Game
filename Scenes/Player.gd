@@ -11,11 +11,14 @@ func on_death():
 func on_spell(spell):
 	if (spell == "wind"):
 		get_parent().windDash = 1
+		GlobalVariables.spell_active[0] = true
 	elif (spell == "fire"):
 		get_parent().fireExplosion = true
+		GlobalVariables.spell_active[1] = true
 	elif (spell == "bounce"):
 		get_parent().bounce = true
 		$BouncePower.start()
+		GlobalVariables.spell_active[2] = true
 
 func _on_Sprite_animation_finished():
 # warning-ignore:return_value_discarded
@@ -40,3 +43,4 @@ func _on_IdleDeathAnimation_timeout():
 
 func _on_BouncePower_timeout():
 	get_parent().bounce = false
+	GlobalVariables.spell_active[2] = false
