@@ -35,7 +35,9 @@ var data = {
 
 var spell_active = [false, false, false]
 
-var complete_image_texture = preload("res://Images/achievements/achievement _finished.png")
+var music = [0, 0]
+
+const complete_image_texture = preload("res://Images/achievements/achievement _finished.png")
 
 func _ready():
 	var file = File.new()
@@ -50,6 +52,10 @@ func _ready():
 		if (save.has("achievements")):
 			achievements = save["achievements"]
 			stats = save["stats"]
+		if (save.has("music")):
+			music = save["music"]
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), music[0])
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), music[1])
 func save():
 	var file = File.new()
 	file.open("user://save.dat", File.WRITE)
@@ -59,7 +65,8 @@ func save():
 			"gold": "0",
 			"data": {},
 			"achievements": {},
-			"stats": {}
+			"stats": {},
+			"music": []
 	}
 	save["highscore"] = highscore
 	save["currentSkin"] = currentSkin
@@ -67,6 +74,7 @@ func save():
 	save["data"] = data
 	save["achievements"] = achievements
 	save["stats"] = stats
+	save["music"] = music
 	file.store_var(save)
 	file.close()
    

@@ -306,9 +306,9 @@ animations = [ {
 "name": "id_0",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 22 ) ],
 "loop": true,
-"name": "id_1",
+"name": "predeath",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -316,24 +316,9 @@ animations = [ {
 "name": "id_2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "id_6",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "id_3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "id_8",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 22 ) ],
-"loop": true,
-"name": "predeath",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
@@ -341,9 +326,24 @@ animations = [ {
 "name": "id_7",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "id_6",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "id_5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": true,
+"name": "id_1",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "id_8",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 14 ) ],
@@ -399,6 +399,7 @@ __meta__ = {
 stream = ExtResource( 3 )
 volume_db = -10.0
 autoplay = true
+bus = "Music"
 script = ExtResource( 5 )
 
 [node name="HighScore" type="Label" parent="."]
@@ -427,26 +428,32 @@ polygon = PoolVector2Array( -16.8573, 15.7806, -0.0794525, -16.6311, 16.3171, 16
 
 [node name="Death" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 8 )
+bus = "SFX"
 
 [node name="Coin" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 17 )
 volume_db = -10.0
+bus = "SFX"
 
 [node name="Star" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 18 )
 volume_db = -10.0
+bus = "SFX"
 
 [node name="Spell" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 19 )
 volume_db = -5.0
+bus = "SFX"
 
 [node name="Break" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 20 )
 volume_db = -5.0
+bus = "SFX"
 
 [node name="Special" type="AudioStreamPlayer" parent="Player"]
 stream = ExtResource( 21 )
 volume_db = -5.0
+bus = "SFX"
 
 [node name="IdleDeath" type="Timer" parent="Player"]
 wait_time = 5.0

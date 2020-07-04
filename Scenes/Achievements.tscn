@@ -53,6 +53,7 @@ __meta__ = {
 stream = ExtResource( 5 )
 volume_db = -10.0
 autoplay = true
+bus = "Music"
 script = ExtResource( 3 )
 
 [node name="AchivementMainNode" type="Control" parent="."]
