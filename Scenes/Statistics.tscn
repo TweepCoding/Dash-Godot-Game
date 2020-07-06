@@ -4,8 +4,8 @@
 [ext_resource path="res://Scenes/BackToConfig.gd" type="Script" id=2]
 [ext_resource path="res://Extras/pc.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Scenes/Statistics.gd" type="Script" id=4]
-[ext_resource path="res://Music/Sigma 1.wav" type="AudioStream" id=5]
-[ext_resource path="res://Scenes/MusicPlayer.gd" type="Script" id=6]
+[ext_resource path="res://Music/Sigma 1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://Effects/cancel-1.wav" type="AudioStream" id=7]
 
 [node name="Statistics" type="Node2D"]
 script = ExtResource( 4 )
@@ -56,8 +56,8 @@ __meta__ = {
 [node name="Contents" type="VBoxContainer" parent="."]
 margin_left = 10.0
 margin_top = 180.0
-margin_right = 282.0
-margin_bottom = 349.0
+margin_right = 353.0
+margin_bottom = 500.0
 rect_scale = Vector2( 0.75, 0.75 )
 custom_constants/separation = 60
 __meta__ = {
@@ -65,41 +65,51 @@ __meta__ = {
 }
 
 [node name="Stars" type="Label" parent="Contents"]
-margin_right = 272.0
+margin_right = 343.0
 margin_bottom = 16.0
 custom_fonts/font = ExtResource( 3 )
 text = "Collected Stars:"
+align = 1
 
 [node name="Coins" type="Label" parent="Contents"]
 margin_top = 76.0
-margin_right = 272.0
+margin_right = 343.0
 margin_bottom = 92.0
 custom_fonts/font = ExtResource( 3 )
 text = "Collected Coins:"
+align = 1
 
 [node name="Spells" type="Label" parent="Contents"]
 margin_top = 152.0
-margin_right = 272.0
+margin_right = 343.0
 margin_bottom = 168.0
 custom_fonts/font = ExtResource( 3 )
 text = "Collected Spells:"
+align = 1
 
 [node name="Deaths" type="Label" parent="Contents"]
 margin_top = 228.0
-margin_right = 272.0
+margin_right = 343.0
 margin_bottom = 244.0
 custom_fonts/font = ExtResource( 3 )
 text = "Total Deaths:"
+align = 1
 
 [node name="Rocks" type="Label" parent="Contents"]
 margin_top = 304.0
-margin_right = 272.0
+margin_right = 343.0
 margin_bottom = 320.0
 custom_fonts/font = ExtResource( 3 )
 text = "Broken Rocks:"
+align = 1
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = 2.0
 autoplay = true
 bus = "Music"
-script = ExtResource( 6 )
+
+[node name="ButtonDeny" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = 5.0
+bus = "SFX"

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Music/Death Jingle 02.wav" type="AudioStream" id=1]
 [ext_resource path="res://Extras/pc.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Scenes/Exit.gd" type="Script" id=3]
 [ext_resource path="res://Scenes/GameOver.gd" type="Script" id=4]
+[ext_resource path="res://Effects/ok-1.wav" type="AudioStream" id=5]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -107,3 +108,8 @@ text = "New Highscore!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ButtonConfirm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -5.0
+bus = "SFX"

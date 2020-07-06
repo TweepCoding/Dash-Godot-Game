@@ -4,5 +4,7 @@ func _ready():
 	pass
 
 func _pressed():
-# warning-ignore:return_value_discarded
-	get_tree().change_scene("res://Scenes/MainMenu.tscn")
+	get_parent().get_node("ButtonDeny").play()
+	GlobalVariables.current_animation = "fade_out"
+	GlobalVariables.next_scene = "res://Scenes/MainMenu.tscn"
+	get_parent().add_child(GlobalVariables.transition.instance())

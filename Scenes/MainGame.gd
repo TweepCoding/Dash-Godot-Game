@@ -7,6 +7,8 @@ var enemy_chance = 0.9
 var windDash = 0
 var fireExplosion = false
 var bounce = false
+var bounce_back = 1.2
+var friction = 0.92
 const coin = preload("res://Objects/Coin.tscn")
 const star = preload("res://Objects/Star.tscn")
 const rock = preload("res://Objects/Rock.tscn")
@@ -14,6 +16,8 @@ const spell = preload("res://Objects/Spell.tscn")
 const explosion = preload("res://Objects/Explosion.tscn")
 
 func _ready():
+	GlobalVariables.current_animation = "fade_in"
+	add_child(GlobalVariables.transition.instance())
 	randomize()
 	$HighScore.text = GlobalVariables.highscore
 	$Player/Sprite.animation = "id_" + GlobalVariables.currentSkin
@@ -25,18 +29,18 @@ func _process(delta):
 		var collision = $Player.move_and_collide(velocity * delta)
 		if collision != null && bounce:
 			if collision.collider.name == "VerticalLimits":
-				velocity.y *= -1.2
-				velocity.x *= 1.2
+				velocity.y *= -1 * bounce_back
+				velocity.x *= bounce_back
 			else:
-				velocity.y *= 1.2
-				velocity.x *= -1.2
+				velocity.y *= bounce_back
+				velocity.x *= -1 * bounce_back
 			$Player.move_and_collide(velocity * delta)
-	elif ($MusicPlayer.playing):
-		$MusicPlayer.stop()
+	elif ($MusicPlayer.get_volume_db() == -10):
+		$MusicPlayer.set_volume_db(-80)
 		GlobalVariables.score = $Score.text
 		if (int($Score.text) > int(GlobalVariables.highscore)):
 			GlobalVariables.highscore = $Score.text
-	velocity *= pow(0.92, delta * 60)
+	velocity *= pow(friction, delta * 60)
 	if (velocity != Vector2(0, 0) && velocity.distance_to(previous_velocity) < 0.08):
 		velocity = Vector2(0, 0)
 	if (velocity == Vector2(0, 0) && fireExplosion):
@@ -92,7 +96,7 @@ func _on_CollisionCheck_safe_area(location):
 			instance.connect("score", self, "on_score_add")
 		elif (rand_range(0,0.9) > 0.81):
 			instance = coin.instance()
-		elif (rand_range(0,0.81) > 0.7695):
+		elif (rand_range(0.81,0.81) > 0.7695):
 			instance = spell.instance()
 			instance.connect("spell", $Player, "on_spell")
 		else:

@@ -33,11 +33,16 @@ var data = {
 		"8":{"price":"500", "owned":false}
 }
 
-var spell_active = [false, false, false]
+var spell_active = [false, false, false, false]
 
 var music = [0, 0]
 
+var current_animation = ""
+
+var next_scene = ""
+
 const complete_image_texture = preload("res://Images/achievements/achievement _finished.png")
+const transition = preload("res://Objects/Transition.tscn")
 
 func _ready():
 	var file = File.new()

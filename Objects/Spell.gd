@@ -2,12 +2,9 @@ extends AnimatedSprite
 
 signal spell(spell)
 
-func _ready():
-	pass
-
 func _enter_tree():
 	randomize()
-	var rand = randi()%3 + 1
+	var rand = randi()%4 + 1
 	match rand:
 		1:
 			animation = "wind"
@@ -15,6 +12,9 @@ func _enter_tree():
 			animation = "fire"
 		3:
 			animation = "bounce"
+		4:
+			animation = "speed"
+	play()
 
 func _on_Area2D_body_entered(body):
 	if (body.name == "Player"):

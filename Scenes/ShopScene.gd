@@ -3,6 +3,8 @@ extends Node2D
 var shopPage = "0"
 
 func _ready():
+	GlobalVariables.current_animation = "fade_in"
+	add_child(GlobalVariables.transition.instance())
 	if (GlobalVariables.currentSkin != "0"):
 		$BuyUse.text = "Use"
 	$Balance.text = "Gold: " + GlobalVariables.gold + "$"

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Scattered Creep.ogg-8bf882cddded7250e17342052c872110.oggstr"
+
+[deps]
+
+source_file="res://Music/Scattered Creep.ogg"
+dest_files=[ "res://.import/Scattered Creep.ogg-8bf882cddded7250e17342052c872110.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

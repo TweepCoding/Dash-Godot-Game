@@ -2,9 +2,8 @@
 
 [ext_resource path="res://Scenes/Achievements.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Button.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/MusicPlayer.gd" type="Script" id=3]
 [ext_resource path="res://Images/shopScene/arrow.png" type="Texture" id=4]
-[ext_resource path="res://Music/Curse Of The Sphinx.wav" type="AudioStream" id=5]
+[ext_resource path="res://Music/Curse Of The Sphinx.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Images/achievements/sprite_0.png" type="Texture" id=6]
 [ext_resource path="res://Images/achievements/sprite_2.png" type="Texture" id=7]
 [ext_resource path="res://Images/achievements/achievement.png" type="Texture" id=8]
@@ -13,6 +12,7 @@
 [ext_resource path="res://Images/achievements/sprite_3.png" type="Texture" id=11]
 [ext_resource path="res://Images/achievements/sprite_4.png" type="Texture" id=12]
 [ext_resource path="res://Images/achievements/sprite_5.png" type="Texture" id=13]
+[ext_resource path="res://Effects/cancel-1.wav" type="AudioStream" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -54,7 +54,6 @@ stream = ExtResource( 5 )
 volume_db = -10.0
 autoplay = true
 bus = "Music"
-script = ExtResource( 3 )
 
 [node name="AchivementMainNode" type="Control" parent="."]
 margin_top = 60.0
@@ -274,3 +273,8 @@ text = "Achievements"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ButtonDeny" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+volume_db = 5.0
+bus = "SFX"

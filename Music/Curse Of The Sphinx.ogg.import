@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Curse Of The Sphinx.ogg-e2d89908085683e89a67fcdd8d331305.oggstr"
+
+[deps]
+
+source_file="res://Music/Curse Of The Sphinx.ogg"
+dest_files=[ "res://.import/Curse Of The Sphinx.ogg-e2d89908085683e89a67fcdd8d331305.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

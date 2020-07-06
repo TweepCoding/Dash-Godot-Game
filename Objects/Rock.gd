@@ -1,10 +1,10 @@
-extends Sprite
+extends AnimatedSprite
 
 signal death()
 signal score(add)
 
 func _ready():
-	pass
+	play()
 
 func _on_Area2D_body_entered(body):
 	if (body.name == "Player" && get_parent().windDash == 0):
