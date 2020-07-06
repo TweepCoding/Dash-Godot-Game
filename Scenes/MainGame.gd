@@ -96,7 +96,7 @@ func _on_CollisionCheck_safe_area(location):
 			instance.connect("score", self, "on_score_add")
 		elif (rand_range(0,0.9) > 0.81):
 			instance = coin.instance()
-		elif (rand_range(0.81,0.81) > 0.7695):
+		elif (rand_range(0,0.81) > 0.7695):
 			instance = spell.instance()
 			instance.connect("spell", $Player, "on_spell")
 		else:

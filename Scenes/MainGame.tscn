@@ -305,20 +305,10 @@ animations = [ {
 "name": "id_6",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "id_4",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 15 ) ],
 "loop": true,
 "name": "id_3",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "id_0",
-"speed": 1.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
@@ -335,11 +325,6 @@ animations = [ {
 "name": "id_1",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "id_8",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "id_5",
@@ -348,6 +333,21 @@ animations = [ {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "predeath",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "id_8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "id_0",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "id_4",
 "speed": 5.0
 } ]
 
