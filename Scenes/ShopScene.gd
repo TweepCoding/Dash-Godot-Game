@@ -17,10 +17,15 @@ func turn_page(direction):
 		else:
 			shopPage = "0"
 	$AnimatedSprite.animation = "id_" + shopPage
-	$Price.text = "Price: " + GlobalVariables.data[shopPage]["price"] + "$"
 	var currentStatus = "Buy"
+	$Price.text = "Price: " + GlobalVariables.data[shopPage]["price"] + "$"
+	$BuyUse.set_position(Vector2(54, 410))
 	if (GlobalVariables.currentSkin == shopPage):
 		currentStatus = "Current"
+		$BuyUse.set_position(Vector2(54, 370))
+		$Price.text = ""
 	elif (GlobalVariables.data[shopPage]["owned"]):
 		currentStatus = "Use"
+		$Price.text = ""
+		$BuyUse.set_position(Vector2(54, 370))
 	$BuyUse.text = currentStatus

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Awakening Trouble.ogg-c422746d1b690441c0e24439d21e2a5a.oggstr"
+
+[deps]
+
+source_file="res://Music/Awakening Trouble.ogg"
+dest_files=[ "res://.import/Awakening Trouble.ogg-c422746d1b690441c0e24439d21e2a5a.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

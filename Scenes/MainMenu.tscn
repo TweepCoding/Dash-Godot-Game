@@ -2,11 +2,11 @@
 
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Extras/pc.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Images/mainMenu/gear.svg" type="Texture" id=3]
 [ext_resource path="res://Music/Open Windows.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Scenes/StartButton.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/ShopButton.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/TutorialButton.gd" type="Script" id=7]
-[ext_resource path="res://Images/mainMenu/gear.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/TextureButton.gd" type="Script" id=9]
 [ext_resource path="res://Effects/ok-1.wav" type="AudioStream" id=10]
 
@@ -79,7 +79,7 @@ margin_top = 5.01975
 margin_right = 261.922
 margin_bottom = 21.0197
 custom_fonts/font = ExtResource( 2 )
-text = "V.1.6 BETA"
+text = "V.1.0 RELEASE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -145,11 +145,12 @@ __meta__ = {
 }
 
 [node name="TextureButton" type="TextureButton" parent="."]
-margin_left = -0.200439
-margin_top = 487.811
-margin_right = 49.7996
-margin_bottom = 537.811
-texture_normal = ExtResource( 8 )
+margin_left = 5.0
+margin_top = 490.0
+margin_right = 584.0
+margin_bottom = 1069.0
+rect_scale = Vector2( 0.08, 0.08 )
+texture_normal = ExtResource( 3 )
 script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false

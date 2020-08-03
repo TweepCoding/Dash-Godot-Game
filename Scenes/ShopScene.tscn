@@ -29,9 +29,14 @@
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "id_7",
+"name": "id_6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "id_4",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ) ],
@@ -64,14 +69,9 @@ animations = [ {
 "name": "id_5",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "id_6",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "id_4",
+"name": "id_7",
 "speed": 5.0
 } ]
 
@@ -180,22 +180,21 @@ frames = SubResource( 5 )
 animation = "id_0"
 
 [node name="Price" type="Label" parent="."]
-margin_left = 60.3383
+margin_left = 62.0
 margin_top = 340.487
-margin_right = 204.338
+margin_right = 206.0
 margin_bottom = 356.487
 custom_fonts/font = ExtResource( 2 )
-text = "Price: 0$"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BuyUse" type="Button" parent="."]
-margin_left = 53.0686
-margin_top = 408.801
-margin_right = 165.069
-margin_bottom = 436.801
+margin_left = 54.0
+margin_top = 370.0
+margin_right = 166.0
+margin_bottom = 398.0
 rect_scale = Vector2( 1.5, 1.5 )
 custom_styles/hover = SubResource( 6 )
 custom_styles/pressed = SubResource( 7 )

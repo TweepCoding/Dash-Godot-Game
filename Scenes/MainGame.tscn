@@ -1,9 +1,10 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://Images/shopScene/Skins/sprite_0.png" type="Texture" id=1]
 [ext_resource path="res://Extras/pc.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Music/Neonlit Encounters.ogg" type="AudioStream" id=3]
 [ext_resource path="res://Scenes/MainGame.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/MusicPlayer.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/Player.gd" type="Script" id=6]
 [ext_resource path="res://Effects/explosion.png" type="Texture" id=7]
 [ext_resource path="res://Music/explode-6.wav" type="AudioStream" id=8]
@@ -22,6 +23,8 @@
 [ext_resource path="res://Music/laser-4.wav" type="AudioStream" id=21]
 [ext_resource path="res://Images/shopScene/Skins/predeath.png" type="Texture" id=22]
 [ext_resource path="res://Scenes/CollisionCheck.gd" type="Script" id=23]
+[ext_resource path="res://Music/Awakening Trouble.ogg" type="AudioStream" id=24]
+[ext_resource path="res://Music/Awakening Slowly.ogg" type="AudioStream" id=25]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -305,19 +308,9 @@ animations = [ {
 "name": "id_6",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
-"name": "id_3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "id_7",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ) ],
-"loop": true,
-"name": "id_2",
+"name": "id_4",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
@@ -325,19 +318,14 @@ animations = [ {
 "name": "id_1",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": true,
-"name": "id_5",
+"name": "id_2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 22 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
-"name": "predeath",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": true,
-"name": "id_8",
+"name": "id_3",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 1 ) ],
@@ -345,9 +333,24 @@ animations = [ {
 "name": "id_0",
 "speed": 1.0
 }, {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": true,
-"name": "id_4",
+"name": "id_8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "id_5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "id_7",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 22 ) ],
+"loop": true,
+"name": "predeath",
 "speed": 5.0
 } ]
 
@@ -394,11 +397,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music-1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 volume_db = -10.0
-autoplay = true
 bus = "Music"
+script = ExtResource( 5 )
+
+[node name="Music-2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+volume_db = -10.0
+bus = "Music"
+script = ExtResource( 5 )
+
+[node name="Music-3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -10.0
+bus = "Music"
+script = ExtResource( 5 )
 
 [node name="HighScore" type="Label" parent="."]
 margin_left = 185.091
@@ -508,6 +523,9 @@ shape = SubResource( 58 )
 [node name="Timer" type="Timer" parent="CollisionCheck"]
 wait_time = 0.1
 one_shot = true
+[connection signal="finished" from="Music-1" to="Music-1" method="_on_MusicPlayer_finished"]
+[connection signal="finished" from="Music-2" to="Music-2" method="_on_MusicPlayer_finished"]
+[connection signal="finished" from="Music-3" to="Music-3" method="_on_MusicPlayer_finished"]
 [connection signal="animation_finished" from="Player/Sprite" to="Player" method="_on_Sprite_animation_finished"]
 [connection signal="timeout" from="Player/IdleDeath" to="Player" method="_on_IdleDeath_timeout"]
 [connection signal="timeout" from="Player/IdleDeathWarning" to="Player" method="_on_IdleDeathWarning_timeout"]

@@ -84,9 +84,9 @@ func save():
 	file.close()
    
 func check_achievement():
-	achievements["Stars"] = achievements["Stars"] || int(stats["CollectedStars"]) > 49
-	achievements["Points"] = achievements["Points"] || int(highscore) > 499
+	achievements["Stars"] = achievements["Stars"] || int(stats["CollectedStars"]) > 99
+	achievements["Points"] = achievements["Points"] || int(highscore) > 749
 	achievements["Coins"] = achievements["Coins"] || int(stats["CollectedCoins"]) > 49
-	achievements["Rocks"] = achievements["Rocks"] || int(stats["BrokenRocks"]) > 19
+	achievements["Rocks"] = achievements["Rocks"] || int(stats["BrokenRocks"]) > 24
 	achievements["Spells"] = achievements["Spells"] || int(stats["CollectedSpells"]) > 24
-	achievements["All_Spells"] = achievements["All_Spells"] || spell_active.count(true) == 3
+	achievements["All_Spells"] = achievements["All_Spells"] || spell_active.count(true) == 4

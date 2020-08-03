@@ -9,6 +9,7 @@ var fireExplosion = false
 var bounce = false
 var bounce_back = 1.2
 var friction = 0.92
+var currentplayer
 const coin = preload("res://Objects/Coin.tscn")
 const star = preload("res://Objects/Star.tscn")
 const rock = preload("res://Objects/Rock.tscn")
@@ -19,6 +20,7 @@ func _ready():
 	GlobalVariables.current_animation = "fade_in"
 	add_child(GlobalVariables.transition.instance())
 	randomize()
+	play_random()
 	$HighScore.text = GlobalVariables.highscore
 	$Player/Sprite.animation = "id_" + GlobalVariables.currentSkin
 
@@ -35,8 +37,8 @@ func _process(delta):
 				velocity.y *= bounce_back
 				velocity.x *= -1 * bounce_back
 			$Player.move_and_collide(velocity * delta)
-	elif ($MusicPlayer.get_volume_db() == -10):
-		$MusicPlayer.set_volume_db(-80)
+	elif (currentplayer.get_volume_db() == -10):
+		currentplayer.set_volume_db(-80)
 		GlobalVariables.score = $Score.text
 		if (int($Score.text) > int(GlobalVariables.highscore)):
 			GlobalVariables.highscore = $Score.text
@@ -106,3 +108,8 @@ func _on_CollisionCheck_safe_area(location):
 		add_child(instance)
 	else:
 		spawn_item()
+
+func play_random():
+	var rand = randi()%3 + 1
+	currentplayer = get_node("Music-" + str(rand))
+	currentplayer.play()
