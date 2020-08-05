@@ -303,11 +303,6 @@ animations = [ {
 "name": "death",
 "speed": 30.0
 }, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "id_6",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "id_4",
@@ -351,6 +346,11 @@ animations = [ {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "predeath",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "id_6",
 "speed": 5.0
 } ]
 
@@ -518,6 +518,7 @@ autostart = true
 script = ExtResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionCheck"]
+scale = Vector2( 1.1, 1.1 )
 shape = SubResource( 58 )
 
 [node name="Timer" type="Timer" parent="CollisionCheck"]
