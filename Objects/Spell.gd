@@ -19,7 +19,7 @@ func _enter_tree():
 func _on_Area2D_body_entered(body):
 	if (body.name == "Player"):
 		emit_signal("spell",animation)
-		GlobalVariables.stats["CollectedSpells"] = str(int(GlobalVariables.stats["CollectedSpells"]) + 1)
+		GlobalVariables.stats["CollectedSpells"] += 1
 		GlobalVariables.check_achievement()
 		get_parent().get_node("Player/Spell").play()
 	queue_free()

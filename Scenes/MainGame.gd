@@ -1,5 +1,6 @@
 extends Node2D
 
+var MUSIC_BUS_INDEX = AudioServer.get_bus_index("Music")
 var velocity = Vector2(0, 0)
 var previous_velocity = Vector2(0, 0)
 var number = 1.5
@@ -17,12 +18,13 @@ const spell = preload("res://Objects/Spell.tscn")
 const explosion = preload("res://Objects/Explosion.tscn")
 
 func _ready():
+	translate_lang()
 	GlobalVariables.current_animation = "fade_in"
 	add_child(GlobalVariables.transition.instance())
 	randomize()
 	play_random()
-	$HighScore.text = GlobalVariables.highscore
-	$Player/Sprite.animation = "id_" + GlobalVariables.currentSkin
+	$HighScore.text += str(GlobalVariables.highscore)
+	$Player/Sprite.animation = "id_" + str(GlobalVariables.currentSkin)
 
 func _process(delta):
 	number += 0.0001
@@ -37,11 +39,12 @@ func _process(delta):
 				velocity.y *= bounce_back
 				velocity.x *= -1 * bounce_back
 			$Player.move_and_collide(velocity * delta)
-	elif (currentplayer.get_volume_db() == -10):
-		currentplayer.set_volume_db(-80)
-		GlobalVariables.score = $Score.text
-		if (int($Score.text) > int(GlobalVariables.highscore)):
-			GlobalVariables.highscore = $Score.text
+	elif (not AudioServer.is_bus_mute(MUSIC_BUS_INDEX)):
+		AudioServer.set_bus_mute(MUSIC_BUS_INDEX, true)
+		$TryToSpawn.stop()
+		GlobalVariables.score = int($Score.text)
+		if (int($Score.text) > GlobalVariables.highscore):
+			GlobalVariables.highscore = int($Score.text)
 	velocity *= pow(friction, delta * 60)
 	if (velocity != Vector2(0, 0) && velocity.distance_to(previous_velocity) < 0.08):
 		velocity = Vector2(0, 0)
@@ -55,7 +58,7 @@ func _process(delta):
 
 func _input(event):
 	if event is InputEventMouseButton && event.is_pressed() && $Player/Sprite.animation != "death":
-		if ($Score.text != "0"):
+		if (not int($Score.text) <= 0):
 			$Score.text = str(int($Score.text) - 10)
 		var vectorBetweenPoints = event.get_position() - $Player.get_position()
 		velocity = vectorBetweenPoints.normalized() * (vectorBetweenPoints.length()/10) * 60
@@ -70,7 +73,7 @@ func _input(event):
 		$Player/IdleDeath.start()
 		if ($Player/IdleDeathWarning.time_left == 0):
 			$Player/IdleDeathAnimation.stop()
-			$Player/Sprite.animation = "id_" + GlobalVariables.currentSkin
+			$Player/Sprite.animation = "id_" + str(GlobalVariables.currentSkin)
 		$Player/IdleDeathWarning.start()
 		
 
@@ -113,3 +116,12 @@ func play_random():
 	var rand = randi()%3 + 1
 	currentplayer = get_node("Music-" + str(rand))
 	currentplayer.play()
+
+func translate_lang():
+	match GlobalVariables.language:
+		"Spanish":
+			$HighScore.text = "Mejor Puntaje: "
+			$HighScore.set_scale(Vector2(0.85, 1))
+		"English":
+			$HighScore.text = "Highscore: "
+			$HighScore.set_scale(Vector2(1, 1))

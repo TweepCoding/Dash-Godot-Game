@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_1.png-9f9a995c8e835b77ccb9f9739864a6c3.stex"
+path="res://.import/appicon.png-639ec13b6db333c069d29c4ef3927453.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/achievements/sprite_1.png"
-dest_files=[ "res://.import/sprite_1.png-9f9a995c8e835b77ccb9f9739864a6c3.stex" ]
+source_file="res://appicon.png"
+dest_files=[ "res://.import/appicon.png-639ec13b6db333c069d29c4ef3927453.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

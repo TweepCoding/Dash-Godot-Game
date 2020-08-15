@@ -8,13 +8,13 @@ func _pressed():
 		self.text = "Current"
 		GlobalVariables.currentSkin = get_parent().shopPage
 	elif (self.text == "Buy"):
-		var intgold = int(GlobalVariables.gold)
-		var intprice = int(GlobalVariables.data[get_parent().shopPage]["price"])
-		if (intgold >= intprice):
-			GlobalVariables.gold = str(intgold - intprice)
+		var intprice = GlobalVariables.data[get_parent().shopPage]["price"]
+		if (GlobalVariables.gold >= intprice):
+			$BuyUse.set_position(Vector2(54, 370))
+			$Price.text = ""
+			GlobalVariables.gold -= intprice
 			GlobalVariables.data[get_parent().shopPage]["owned"] = true
 			GlobalVariables.currentSkin = get_parent().shopPage
 			self.text = "Current"
-			GlobalVariables.save()
-			get_parent().get_node("Balance").text = "Gold: " + GlobalVariables.gold + "$"
+			get_parent().get_node("Balance").text = get_parent().balancetext + str(GlobalVariables.gold) + "$"
 

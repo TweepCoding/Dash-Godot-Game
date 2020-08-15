@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://Extras/pc.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/StartButton.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/ShopButton.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/TutorialButton.gd" type="Script" id=7]
+[ext_resource path="res://Images/mainMenu/flags/english.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/TextureButton.gd" type="Script" id=9]
 [ext_resource path="res://Effects/ok-1.wav" type="AudioStream" id=10]
 
@@ -33,6 +34,16 @@
 [sub_resource type="StyleBoxEmpty" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[sub_resource type="StyleBoxEmpty" id=17]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -74,12 +85,13 @@ __meta__ = {
 }
 
 [node name="VersionLabel" type="Label" parent="."]
-margin_left = 5.92279
-margin_top = 5.01975
-margin_right = 261.922
-margin_bottom = 21.0197
+margin_left = 6.0
+margin_top = 5.0
+margin_right = 261.999
+margin_bottom = 40.0
 custom_fonts/font = ExtResource( 2 )
-text = "V.1.0 RELEASE"
+text = "V.1.1
+PRE-RELEASE"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -160,7 +172,24 @@ __meta__ = {
 stream = ExtResource( 10 )
 volume_db = -5.0
 bus = "SFX"
+
+[node name="Language" type="Button" parent="."]
+margin_left = 202.138
+margin_top = 491.315
+margin_right = 254.138
+margin_bottom = 521.315
+rect_scale = Vector2( 1.5, 1.5 )
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 17 )
+icon = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="change" from="Buttons/StartButton" to="." method="_on_StartButton_change"]
 [connection signal="change" from="Buttons/ShopButton" to="." method="_on_StartButton_change"]
 [connection signal="change" from="Buttons/MoreButton" to="." method="_on_StartButton_change"]
 [connection signal="change" from="TextureButton" to="." method="_on_StartButton_change"]
+[connection signal="pressed" from="Language" to="." method="_on_Language_pressed"]

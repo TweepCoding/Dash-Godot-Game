@@ -1,9 +1,9 @@
 extends Node
 
-var score = "0"
-var highscore = "0"
-var currentSkin = "0"
-var gold = "0"
+var score = 0
+var highscore = 0
+var currentSkin = 0
+var gold = 0
 var achievements = {
 	"Stars":false,
 	"Points":false,
@@ -22,16 +22,18 @@ var stats = {
 }
 
 var data = {
-		"0":{"price":"0", "owned":true},
-		"1":{"price":"20", "owned":false},
-		"2":{"price":"50", "owned":false},
-		"3":{"price":"50", "owned":false},
-		"4":{"price":"80", "owned":false},
-		"5":{"price":"100", "owned":false},
-		"6":{"price":"150", "owned":false},
-		"7":{"price":"250", "owned":false},
-		"8":{"price":"500", "owned":false}
+		"0":{"price":0, "owned":true},
+		"1":{"price":20, "owned":false},
+		"2":{"price":50, "owned":false},
+		"3":{"price":50, "owned":false},
+		"4":{"price":80, "owned":false},
+		"5":{"price":100, "owned":false},
+		"6":{"price":150, "owned":false},
+		"7":{"price":250, "owned":false},
+		"8":{"price":500, "owned":false}
 }
+
+var language = "English"
 
 var spell_active = [false, false, false, false]
 
@@ -50,28 +52,52 @@ func _ready():
 		file.open("user://save.dat", File.READ)
 		var save = file.get_var()
 		file.close()
-		highscore = save["highscore"]
-		currentSkin = save["currentSkin"]
-		gold = save["gold"]
-		data = save["data"]
+		highscore = int(save["highscore"])
+		currentSkin = int(save["currentSkin"])
+		gold = int(save["gold"])
+		data = data_bw_compatible(save["data"])
 		if (save.has("achievements")):
 			achievements = save["achievements"]
-			stats = save["stats"]
+			stats = stats_bw_compatible(save["stats"])
 		if (save.has("music")):
 			music = save["music"]
+		if (save.has("language")):
+			language = save["language"]
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), music[0])
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), music[1])
+
+func _notification(what):
+	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST || what == MainLoop.NOTIFICATION_WM_GO_BACK_REQUEST:
+		save()
+		get_tree().quit()
+
+
+# This is to fix old save files, which contained strings instead of integers. I'm an idiot.
+func data_bw_compatible(data_to_be_cleaned):
+	var dict = data_to_be_cleaned
+	for key in dict.keys():
+		dict[key]["price"] = int(dict[key]["price"])
+	return dict
+
+#Read above
+func stats_bw_compatible(stats_to_be_cleaned):
+	var dict = stats_to_be_cleaned
+	for key in dict.keys():
+		dict[key] = int(dict[key])
+	return dict
+
 func save():
 	var file = File.new()
 	file.open("user://save.dat", File.WRITE)
 	var save = {
-			"highscore": "0",
-			"currentSkin": "0",
-			"gold": "0",
+			"highscore": 0,
+			"currentSkin": 0,
+			"gold": 0,
 			"data": {},
 			"achievements": {},
 			"stats": {},
-			"music": []
+			"music": [],
+			"language": ""
 	}
 	save["highscore"] = highscore
 	save["currentSkin"] = currentSkin
@@ -80,6 +106,7 @@ func save():
 	save["achievements"] = achievements
 	save["stats"] = stats
 	save["music"] = music
+	save["language"] = language
 	file.store_var(save)
 	file.close()
    

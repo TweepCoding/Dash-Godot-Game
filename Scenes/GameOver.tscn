@@ -76,10 +76,10 @@ __meta__ = {
 }
 
 [node name="Exit" type="Button" parent="."]
-margin_left = 35.3102
-margin_top = 399.724
-margin_right = 239.31
-margin_bottom = 439.724
+margin_left = 35.0
+margin_top = 400.0
+margin_right = 239.0
+margin_bottom = 440.0
 custom_styles/hover = SubResource( 1 )
 custom_styles/pressed = SubResource( 2 )
 custom_styles/focus = SubResource( 3 )

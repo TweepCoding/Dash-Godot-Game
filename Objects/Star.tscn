@@ -5,19 +5,19 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 0, 11, 10 )
+region = Rect2( 0, 0, 38, 37 )
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 1 )
-region = Rect2( 11, 0, 11, 10 )
+region = Rect2( 38, 0, 38, 37 )
 
 [sub_resource type="AtlasTexture" id=3]
 atlas = ExtResource( 1 )
-region = Rect2( 0, 10, 11, 10 )
+region = Rect2( 0, 37, 38, 37 )
 
 [sub_resource type="AtlasTexture" id=4]
 atlas = ExtResource( 1 )
-region = Rect2( 11, 10, 11, 10 )
+region = Rect2( 38, 37, 38, 37 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
@@ -28,10 +28,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 5.5276, 5.00196 )
+extents = Vector2( 6.32803, 6.13105 )
 
 [node name="Star" type="AnimatedSprite"]
-scale = Vector2( 1.5, 1.5 )
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 5 )
 animation = "spawn"
 script = ExtResource( 2 )
@@ -40,5 +40,7 @@ script = ExtResource( 2 )
 position = Vector2( -0.5, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Star"]
+position = Vector2( 0.5, 0.5 )
+scale = Vector2( 3, 3 )
 shape = SubResource( 6 )
 [connection signal="body_entered" from="Star" to="." method="_on_Area2D_body_entered"]

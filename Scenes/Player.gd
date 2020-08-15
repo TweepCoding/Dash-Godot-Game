@@ -48,7 +48,7 @@ func _on_IdleDeathAnimation_timeout():
 	if ($Sprite.animation != "predeath"):
 		$Sprite.animation = "predeath"
 	else:
-		$Sprite.animation = "id_" + GlobalVariables.currentSkin
+		$Sprite.animation = "id_" + str(GlobalVariables.currentSkin)
 
 
 func _on_BouncePower_timeout():

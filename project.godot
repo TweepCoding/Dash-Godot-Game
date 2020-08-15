@@ -22,8 +22,10 @@ boot_splash/image="res://Effects/LoadingSceen.png"
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0, 0, 0, 0 )
-config/icon="res://icon.png"
+config/icon="res://appicon.png"
 config/windows_native_icon="res://icon.ico"
+config/auto_accept_quit=false
+config/quit_on_go_back=false
 
 [autoload]
 
@@ -37,6 +39,7 @@ gdscript/completion/autocomplete_setters_and_getters=true
 
 window/size/width=270
 window/size/height=540
+window/energy_saving/keep_screen_on=false
 window/handheld/orientation="portrait"
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
@@ -47,7 +50,10 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
-quality/subsurface_scattering/quality=2
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
+quality/subsurface_scattering/quality=2

@@ -298,20 +298,15 @@ region = Rect2( 1792, 1536, 256, 256 )
 
 [sub_resource type="SpriteFrames" id=55]
 animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": true,
+"name": "id_5",
+"speed": 5.0
+}, {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ), SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ), SubResource( 28 ), SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ), SubResource( 37 ), SubResource( 38 ), SubResource( 39 ), SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ],
 "loop": false,
 "name": "death",
 "speed": 30.0
-}, {
-"frames": [ ExtResource( 16 ) ],
-"loop": true,
-"name": "id_6",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": true,
-"name": "id_4",
-"speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
@@ -323,24 +318,14 @@ animations = [ {
 "name": "id_2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 15 ) ],
-"loop": true,
-"name": "id_3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 1 ) ],
-"loop": true,
-"name": "id_0",
-"speed": 1.0
-}, {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "id_8",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": true,
-"name": "id_5",
+"name": "id_3",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
@@ -348,9 +333,24 @@ animations = [ {
 "name": "id_7",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 14 ) ],
+"loop": true,
+"name": "id_4",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 22 ) ],
 "loop": true,
 "name": "predeath",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "id_0",
+"speed": 1.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": true,
+"name": "id_6",
 "speed": 5.0
 } ]
 
@@ -386,7 +386,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HighScoreLabel" type="Label" parent="."]
+[node name="HighScore" type="Label" parent="."]
 margin_left = 4.90491
 margin_top = 4.2542
 margin_right = 180.905
@@ -414,17 +414,6 @@ stream = ExtResource( 24 )
 volume_db = -10.0
 bus = "Music"
 script = ExtResource( 5 )
-
-[node name="HighScore" type="Label" parent="."]
-margin_left = 185.091
-margin_top = 5.23842
-margin_right = 225.091
-margin_bottom = 19.2384
-custom_fonts/font = ExtResource( 2 )
-text = "0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Player" type="KinematicBody2D" parent="."]
 position = Vector2( 135, 400 )
@@ -515,6 +504,7 @@ wait_time = 0.1
 autostart = true
 
 [node name="CollisionCheck" type="Area2D" parent="."]
+scale = Vector2( 1.1, 1.1 )
 script = ExtResource( 23 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionCheck"]
